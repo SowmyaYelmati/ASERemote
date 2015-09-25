@@ -24,35 +24,33 @@ src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type=
 </head>
 
 <body background="C:\Users\sowmya\Desktop\ASE\LabAss3\green.png" onload="testmash()">
-<div id=name>
-      <h1>Welcome</h1>
-    <h2><div id="Username"></div></h2>
-      
+<div id="App1" ng-app="GoogleDirection" ng-controller="googlemapoutput">
+	<div class="row">
+		<input type="text"  ng-model="startlocation" id="startlocation"/>
+		<input type="text"  ng-model="endlocation" id="endlocation" /> 
+		<button id="btn" ng-click="calcRoute()">
+			Get Direction,Weather&Analytics Details
+		</button>
+		<br/></br>
+	</div>
+	<div id="map-canvas" style="height: 400px;"></div>
+	<label style="font-family: calibri;color:black;font-size:120%;font-weight:bold">Company Short Code : </label><input type="text" ng-model="shortCode" 
+		id="shortCode"/><br/><br /> 
+	<<br/><br /> 
+	<span ng-show="showCharts"><img src="{{ imageURL }}" alt="Give inputs to display image"></span>
 </div>
-<div class="wrapp" ng-controller="googlemapoutput">
-         <div class="row">
-                <input type="text"  ng-model="startlocation" id="startlocation"/>
-                <input type="text"  ng-model="endlocation" id="endlocation" /> 
-                <button id="btn" ng-click="calcRoute()">
-                    Get Direction& Weather Details
-                </button>
-                 <br/></br>
-            </div>
-            <div id="map-canvas" style="height: 400px;"></div>
-        </div>
-start:<div id="a1"></div><p></p></br>
-end:<div id="b1"></div><p></p>
-<div id="chart_div"></div>
-      <img src="http://chart.finance.yahoo.com/z?s=GOOG&t=3m&q=l&z=l&p=m50,m200" width=900 height=500></img></div>
-<div id="piechart" style="width:900;height:500"></div><p></p>
-    </body>
+
+
+
+
+</body>
 </html>
-
-
 <script>
 angular.module('GoogleDirection', [])
 .controller('googlemapoutput', function ($scope,$http) {
 
+	$scope.imageURL = "";
+		$scope.showCharts=false;
     var map;
     var mapOptions;
     var directionsDisplay = new google.maps.DirectionsRenderer({
@@ -119,6 +117,9 @@ angular.module('GoogleDirection', [])
         // Log an error in the browser's console.
         $log.error('Could not retrieve data from ' + url);
       });
+	  
+	  $scope.showCharts=true;
+			$scope.imageURL="http://chart.finance.yahoo.com/z?s="+$scope.shortCode+"&t=3m&q=l&z=l&p=m50,m200";
 
     };
 
@@ -129,6 +130,23 @@ angular.module('GoogleDirection', [])
 
 
 </script>
+<script>
+	var angularApp = angular.module('apiApp', []);
+	angularApp.controller('apiController', function($scope, $http) {
+		$scope.imageURL = "";
+		$scope.showCharts=false;
+	    
+		$scope.RenderChart=function(){
+			$scope.showCharts=true;
+			alert("hello")
+			$scope.imageURL="http://chart.finance.yahoo.com/z?s="+$scope.shortCode+"&t=3m&q=l&z=l&p=m50,m200";	
+		};
+		}
+	);
+</script>
+
+
+
 
 <script>
 function testmash(){
