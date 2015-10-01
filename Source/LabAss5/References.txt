@@ -1,0 +1,5 @@
+http://devdactic.com/simple-login-example-with-ionic-and-angularjs/
+
+http://codepen.io/anon/pen/QjdZjN?editors=101
+
+https://blog.nraboy.com/2015/03/make-a-gallery-like-image-grid-using-ionic-framework/
