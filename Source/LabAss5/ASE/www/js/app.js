@@ -51,6 +51,17 @@ angular.module('ionicApp', ['ionic'])
 
 .controller('SignInCtrl', function($scope, LoginService, $ionicPopup, $state) {
   $scope.user= {};
+  $scope.password = '';
+  $scope.grade = function() {
+    var size = $scope.password.length;
+    if (size > 8) {
+      $scope.strength = 'strong';
+    } else if (size > 3) {
+      $scope.strength = 'medium';
+    } else {
+      $scope.strength = 'weak';
+    }
+  };
   $scope.signIn = function(user) {
     LoginService.loginUser($scope.user.username,$scope.user.password).success(function(user){
       $state.go('tabs.home');

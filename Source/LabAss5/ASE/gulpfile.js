@@ -1,3 +1,4 @@
+var karma = require('karma').server;
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
@@ -35,6 +36,17 @@ gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
     .on('log', function(data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
+    });
+});
+/**
+* Test task, run test once and exit
+*/
+gulp.task('test', function(done) {
+    karma.start({
+        configFile: __dirname + '/tests/my.conf.js',
+        singleRun: true
+    }, function() {
+        done();
     });
 });
 

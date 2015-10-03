@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Oct 01 2015 18:11:49 GMT-0500 (Central Daylight Time)
+// Generated on Fri Oct 02 2015 22:28:36 GMT-0500 (Central Daylight Time)
 
 module.exports = function(config) {
   config.set({
@@ -10,7 +10,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: [],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
@@ -19,10 +19,11 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'js/*.js',
       '*.js',
+      'js/*.js',
       'www/js/*.js',
       'www/lib/ionic/js/ionic-angular.min.js',
-      'node_models/angular-mocks/angular-mocks.js',
-      'node_modules/angular-mocks/angular-mocks.js'
+      'node_modules/angular-mocks/angular-mocks.js',
+      '**/*tests.js'
     ],
 
 
@@ -62,7 +63,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
